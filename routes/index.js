@@ -4,13 +4,13 @@ const router = express.Router();
 //desc = login/landing page
 //route = GET /
 router.get('/', (req, res) => {
-  res.send('login');
+  res.render('login');
 })
 
 //desc = dashboard
 //route = GET /dashboard
 router.get('/dashboard', (req, res) => {
-  res.send('dashboard');
+  res.render('dashboard');
 })
 
 
