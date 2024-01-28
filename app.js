@@ -56,7 +56,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({mongooseConnection: mongoose.connection})
-}))
+}));
+
+// Set global var
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+})
 
 //Passport middleware
 app.use(passport.initialize());
