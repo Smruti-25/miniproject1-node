@@ -11,9 +11,11 @@ router.get('/add', ensureAuth, (req, res) => {
 
 //desc = Process add forms
 //route = POST /stories
-router.get('/add', ensureAuth, (req, res) => {
+router.get('/add', ensureAuth, async(req, res) => {
   try {
-    req.body();
+    req.body.user = req.user.id
+    await Story.create(req.body)
+    res.redirect('/dashboard')
   } catch (err) {
     console.log(err);
     res.render('error/500');
